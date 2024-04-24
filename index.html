@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="https://cdn.oaistatic.com/_next/static/media/favicon-32x32.be48395e.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="https://cdn.oaistatic.com/_next/static/media/favicon-16x16.9b8dbb69.png"
+    />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+
+    <link
+      href="https://cdn.jsdelivr.net/npm/remixicon@4.2.0/fonts/remixicon.css"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+      integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style type="text/tailwindcss">
+      @layer utilities {
+        .bg-left {
+          background-color: #171717;
+        }
+        .bg-right {
+          background-color: #212121;
+        }
+      }
+    </style>
+    <title>Vite App</title>
+  </head>
+  <body class="bg-right">
+    <div
+      class="fixed bg-left w-64 top-0 left-0 min-h-full hidden md:grid md:grid-rows-11 p-4 z-20"
+    >
+      <div class="row-span-1">
+        <button
+          type="button"
+          class="hover:bg-gray-500/20 text-white text-sm text-nowrap font-sans w-full h-10 px-2 rounded inline-flex justify-between relative items-center transition"
+        >
+          <span class="flex items-center gap-2 text-lg font-medium">
+            <i class="ri-openai-fill text-3xl"></i>
+            New chat</span
+          >
+          <i class="fa-solid fa-pen-to-square text-lg"></i>
+        </button>
+      </div>
+      <div class="bg-red-500 row-span-9"></div>
+      <div class="row-span-1 flex justify-center items-center align-bottom">
+        <div class="mt-auto w-full">
+          <p
+            class="hover:bg-gray-500/20 text-white font-bold p-2 w-full h-11 rounded inline-flex mb-auto items-center transition"
+          >
+            <i class="ri-user-line text-3xl"></i>
+            <span class="ml-3">jean de dieu</span>
+          </p>
+        </div>
+      </div>
+    </div>
+    <div
+      class="bg-right w-full md:w-[calc(100%-256px)] md:ml-64 min-h-dvh relative z-20"
+    >
+      <div
+        class="md:hidden flex justify-between items-center p-2 fixed top-0 left-0 right-0 bg-right"
+      >
+        <button
+          type="button"
+          class="text-white hover:bg-gray-500/20 p-2 rounded h-10"
+        >
+          <i class="ri-menu-line text-xl"></i>
+        </button>
+        <h3
+          class="hover:bg-gray-500/20 text-white font-bold text-xl p-2 h-10 rounded inline-flex justify-between relative items-center transition"
+        >
+          ChatGPT 3.5
+        </h3>
+        <a
+          href=""
+          class="decoration-0 hover:bg-gray-500/20 text-white font-bold p-2 h-10 rounded"
+        >
+          <i class="fa-solid fa-pen-to-square text-xl"></i>
+        </a>
+      </div>
+      <div
+        class="hidden md:w-[calc(100%-256px)] md:ml-64 md:flex justify-between items-center p-2 fixed top-0 left-0 right-0 bg-right"
+      >
+        <h3
+          class="hover:bg-gray-500/20 bg-right text-white text-xl font-bold p-2 h-11 rounded inline-flex justify-between relative items-center transition"
+        >
+          ChatGPT 3.5
+        </h3>
+        <button
+          type="button"
+          class="py-1 px-2 rounded text-white border-gray-500 hover:bg-gray-500/20 border"
+        >
+          <i class="fa-solid fa-print"></i>
+        </button>
+      </div>
+      <br /><br /><br />
+      <div
+        class="md:w-2/3 max-w-[90%] space-y-4 m-auto flex justify-center flex-col py-4 text-white"
+        id="chat_container"
+      ></div>
+      <br /><br /><br /><br /><br />
+      <div
+        class="bg-right w-full md:w-[calc(100%-256px)] md:p-4 p-3 fixed bottom-0"
+      >
+        <form
+          method="post"
+          class="relative w-full md:w-2/3 lg:w-1/2 mx-auto flex justify-center items-center group"
+        >
+          <textarea
+            id="message"
+            name="promt"
+            rows="1"
+            class="w-full bg-transparent p-3 pr-16 px-3 border border-gray-500 focus:border focus:border-gray-700 rounded-2xl overflow-hidden resize-none ring focus:ring-gray-500/30 ring-gray-500 text-gray-400 border-none outline-none"
+            placeholder="Message ChatGPT..."
+          ></textarea>
+          <button
+            type="submit"
+            id="sendButton"
+            class="absolute right-5 p-1 rounded bg-gray-500/30 focus:border-gray-500/10 focus:border hover:bg-gray-500/50"
+          >
+            <svg
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              class="text-white"
+            >
+              <path
+                d="M7 11L12 6L17 11M12 18V7"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              ></path>
+            </svg>
+          </button>
+        </form>
+        <div
+          class="relative px-2 py-2 text-center text-xs text-gray-300 md:px-[60px]"
+        >
+          <span
+            >ChatGPT can make mistakes. Consider checking important
+            information.</span
+          >
+        </div>
+      </div>
+    </div>
+    <script type="module" src="main.js"></script>
+  </body>
+</html>

@@ -1,0 +1,9 @@
+@layer utilities {
+  .bg-left {
+    background-color: #171717;
+  }
+
+  .bg-right {
+    background-color: #212121;
+  }
+}
